@@ -169,7 +169,7 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* news letter */}
+      {/* News letter */}
       <NewsLetter />
     </>
   );
