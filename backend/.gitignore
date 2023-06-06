@@ -23,9 +23,5 @@ logs/
 *.log
 
 # Dependency directories
-/client/node_modules/
-/server/node_modules/
-
-# Compiled output
-/client/build/
-/server/dist/
+/frontend/node_modules/
+/backend/node_modules/
