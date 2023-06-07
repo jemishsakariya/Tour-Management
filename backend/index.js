@@ -5,6 +5,8 @@ const cors = require("cors");
 const cookiesParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
+const tourRoute = require("./routes/toursRoute");
+
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
@@ -32,6 +34,8 @@ dbconnect();
 app.use(express.json());
 app.use(cors());
 app.use(cookiesParser());
+
+app.use("/tours/v1", tourRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is listing on port ${PORT}`);
