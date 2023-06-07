@@ -9,6 +9,7 @@ const tourRoute = require("./routes/toursRoute");
 const userRoute = require("./routes/usersRoute");
 const authRoute = require("./routes/authRoute");
 const reviewRoute = require("./routes/reviewsRoute");
+const bookingRoute = require("./routes/bookingsRoute");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
@@ -47,6 +48,7 @@ app.use("/api/v1/tours", tourRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/review", reviewRoute);
+app.use("/api/v1/booking", bookingRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is listing on port ${PORT}`);
