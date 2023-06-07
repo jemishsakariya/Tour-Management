@@ -6,9 +6,16 @@ const cookiesParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
 const tourRoute = require("./routes/toursRoute");
+const userRoute = require("./routes/usersRoute");
+const authRoute = require("./routes/authRoute");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
+
+const corsOptions = {
+  origin: true,
+  credential: true,
+};
 
 // database connection
 const dbconnect = async () => {
@@ -32,10 +39,12 @@ dbconnect();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookiesParser());
 
-app.use("/tours/v1", tourRoute);
+app.use("/api/v1/tours", tourRoute);
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/auth", authRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is listing on port ${PORT}`);

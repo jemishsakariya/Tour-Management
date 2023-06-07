@@ -11,14 +11,17 @@ const {
   getFeaturedTours,
   getTourCount,
 } = require("../controllers/tourController");
+const { verifyAdmin } = require("../utils/verifyToken");
 
-router.post("/", createTour); // create new tour
-router.put("/:id", updateTour); //update tour
-router.delete("/:id", deleteTour); // delete tour
+router.post("/", verifyAdmin, createTour); // create new tour
+router.put("/:id", verifyAdmin, updateTour); //update tour
+router.delete("/:id", verifyAdmin, deleteTour); // delete tour
 router.get("/:id", getSingelTour); //get single tour
 router.get("/", getAllTour); //get all tour
-router.get("/search/getTourBySearch", getTourBySearch); //get tour by search
-router.get("/search/getFeaturedTours", getFeaturedTours); //get tour by search
-router.get("/search/getToueCount", getTourCount); //get tour by search
+
+// get tour by search
+router.get("/search/getTourBySearch", getTourBySearch);
+router.get("/search/getFeaturedTours", getFeaturedTours);
+router.get("/search/getToueCount", getTourCount);
 
 module.exports = router;
