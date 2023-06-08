@@ -2,19 +2,42 @@ import React, { useRef } from "react";
 import { Col, Form, FormGroup } from "reactstrap";
 import "./search-bar.css";
 
+//
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/config";
+
 const SearchBar = () => {
   const locationRef = useRef("");
   const distanceRef = useRef(0);
   const maxGroupSizeRef = useRef(0);
 
-  const searchHandler = () => {
-    const location = locationRef.current.value;
+  //
+  const navigate = useNavigate();
+
+  const searchHandler = async () => {
+    const location = locationRef.current.value.trim();
     const distance = distanceRef.current.value;
     const maxGroupSize = maxGroupSizeRef.current.value;
 
     if (location === "" || distance === "" || maxGroupSize === "") {
       return alert("All Fields are Required!");
     }
+
+    //
+    const res = await fetch(
+      `${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`
+    );
+
+    if (!res.ok) {
+      alert("Something went wrong");
+    }
+
+    const result = await res.json();
+
+    navigate(
+      `/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+      { state: result.data }
+    );
   };
 
   return (
