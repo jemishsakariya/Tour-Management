@@ -67,4 +67,8 @@
     .newsletter__content p {
         display: none;
     }
+
+    .newaletter__img img {
+        display: none;
+    }
 }

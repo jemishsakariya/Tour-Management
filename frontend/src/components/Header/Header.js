@@ -89,7 +89,7 @@ const Header = () => {
 
               {/* menu end */}
               <div className="nav__right d-flex align-items-center gap-4">
-                <div className="nav__btns d-flex align-items-center gap-4">
+                <div className="nav__btns d-flex align-items-center">
                   {user ? (
                     <>
                       <h5 className="mb-0">{user.username}</h5>

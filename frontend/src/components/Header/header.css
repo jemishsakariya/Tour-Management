@@ -12,11 +12,21 @@
     margin-bottom: 0;
 }
 
+.nav__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+}
+
 .nav__item a {
     text-decoration: none;
     color: var(--heading-color);
     font-weight: 500;
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    height: 24px;
 }
 
 .nav__item a:hover {
@@ -45,10 +55,22 @@
     z-index: 999;
 }
 
+.nav__btns {
+    gap: 16px;
+}
+
+.navigation {
+    padding-right: 5rem;
+}
+
 /* make it responsive */
 @media only screen and (max-width:992px) {
-    .logo img {
+    .logo {
         width: 20%;
+    }
+
+    .logo img {
+        width: 100%;
     }
 
     .navigation {
@@ -66,7 +88,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: calc(100% - 75%);
+        width: calc(100% - 50%) !important;
         height: 100%;
         background: #fff;
         flex-direction: column;
@@ -82,14 +104,26 @@
     .mobile__menu {
         display: block;
     }
+
+    .nav__btns {
+        gap: 16px;
+    }
 }
 
 @media only screen and (max-width:768px) {
+    .logo {
+        width: 35%;
+    }
+
     .logo img {
-        width: 45%;
+        width: 100%;
     }
 
     .menu {
         width: calc(100% - 50%);
+    }
+
+    .nav__btns {
+        gap: 0 !important;
     }
 }
